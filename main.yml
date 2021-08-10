@@ -1,6 +1,6 @@
 - name: Sample play 1
   hosts: all
   tasks:
-    -name: Say Hello
-     debug:
-       msg: "Hello"
+    - name: Say Hello
+      debug:
+        msg: "Hello"
