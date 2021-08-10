@@ -4,3 +4,10 @@
     - name: Say Hello
       debug:
         msg: "Hello"
+
+- name : Sample play 2
+  hosts: all
+  tasks:
+    - name: Say Bye
+      debug:
+        msg: "Bye"
