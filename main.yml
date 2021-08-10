@@ -1,16 +1,16 @@
-- name: Sample play 1
-  hosts: all
-  tasks:
-    - name: Say Hello
-      debug:
-        msg: "Hello"
-
-- name : Sample play 2
-  hosts: all
-  tasks:
-    - name: Say Bye
-      debug:
-        msg: "Bye"
+#- name: Sample play 1
+#  hosts: all
+#  tasks:
+#    - name: Say Hello
+#      debug:
+#        msg: "Hello"
+#
+#- name : Sample play 2
+#  hosts: all
+#  tasks:
+#    - name: Say Bye
+#      debug:
+#        msg: "Bye"
 
 - name : Demo var
   hosts: all
@@ -20,3 +20,9 @@
     - name: print variable
       debug:
         msg: "URL = {{URL}}"
+  tasks:
+    - name: task level var
+      vars:
+       URL: task.google.com
+      debug:
+        msg: "task URL = {{URL}}"
