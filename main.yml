@@ -1,13 +1,8 @@
-- name: Sample play 1
+- name : Demo var
   hosts: all
+  vars:
+    URL: google.com
   tasks:
-    - name: Say Hello
-      debug:
-        msg: "Hello"
-
-- name : Sample play 2
-  hosts: all
-  tasks:
-    - name: Say Bye
-      debug:
-        msg: "Byez"
+    -name: print variable
+     debug:
+       msg: "URL = {{URL}}"
