@@ -11,3 +11,16 @@
        URL: task.google.com
       debug:
         msg: "task URL = {{URL}}"
+
+- name: Demo resgister variable
+  hosts: all
+  tasks:
+    - name: Uptime data
+     shell: uptime
+     resgister: output
+
+    - name: print outpur
+      debug:
+        msg: "{{output}}"
+
+
