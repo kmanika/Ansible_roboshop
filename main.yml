@@ -16,8 +16,8 @@
   hosts: all
   tasks:
     - name: Uptime data
-     shell: uptime
-     resgister: output
+      shell: uptime
+      resgister: output
 
     - name: print outpur
       debug:
