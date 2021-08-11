@@ -7,8 +7,7 @@
   get_url:
     url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
-# mv frontend-main/* .
-# mv static/* .
+
 # rm -rf frontend-master static
 # mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
@@ -26,5 +25,15 @@
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
     remote_src: yes
+- name: copy config file
+  copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Restart Nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
 
 
