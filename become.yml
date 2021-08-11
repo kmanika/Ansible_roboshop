@@ -3,5 +3,5 @@
   tasks:
     - name: install Nginx
       yum:
-        name: nginx
+        name: nodejs
         state: installed
