@@ -1,4 +1,5 @@
 - name: DEMO roles
+  become: yes
   hosts: all
   roles:
     - name: demo
