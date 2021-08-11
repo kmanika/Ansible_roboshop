@@ -1,5 +1,6 @@
 - name : Install package
   hosts: all
+  become: yes
   tasks:
     - name: install Nginx
       yum:
