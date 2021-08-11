@@ -21,6 +21,6 @@
     state: absent
 - name: unzip the acrchive
   unarchive:
-    src: /tmp/frontend.zip
+    src: /tmp/frontend-main.zip
     dest: /usr/share/nginx/
     remote_src: yes
