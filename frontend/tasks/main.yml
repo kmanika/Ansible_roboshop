@@ -1,14 +1,9 @@
 - name: Install Nginx
   yum:
     name: nginx
-      state: installed
-
-- name: Enable Nginx
+    state: installed
+- name: Start Nginx
   systemd:
     name: nginx
     state: started
     enabled: yes
-- name: Download the git files
-  git:
-    repo: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp/frontend.zip
