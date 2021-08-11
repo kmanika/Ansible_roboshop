@@ -1,7 +1,7 @@
 - name: Install Nginx
   yum:
     name: nginx
-    state: absent
+    state: installed
 
 - name: Download the code
   get_url:
@@ -12,19 +12,19 @@
 # rm -rf frontend-master static
 # mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-#- name: Remove old contetnt
-#  file:
-#    path: /usr/share/nginx/html
-#    state: absent
-#- name: unzip the acrchive
-#  unarchive:
-#    src: /tmp/frontend-main.zip
-#    dest: /tmp
-#    remote_src: yes
-#- name: remove the files
-#  copy:
-#    src: /tmp/frontend-main/static/
-#    dest: /usr/share/nginx/html
-#    remote_src: yes
+- name: Remove old contetnt
+  file:
+    path: /usr/share/nginx/html
+    state: absent
+- name: unzip the acrchive
+  unarchive:
+    src: /tmp/frontend-main.zip
+    dest: /tmp
+    remote_src: yes
+- name: remove the files
+  copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html
+    remote_src: yes
 
 
