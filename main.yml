@@ -1,26 +1,9 @@
-- name : Demo var
-  hosts: all
-  vars:
-    URL: google.com
-  tasks:
-    - name: print variable
-      debug:
-        msg: "URL = {{URL}}"
-    - name: task level var
-      vars:
-       URL: task.google.com
-      debug:
-        msg: "task URL = {{URL}}"
-
-- name: Demo resgister variable
+- name: Demo on register
   hosts: all
   tasks:
-    - name: Uptime data
+    - name: Run uptime command
       shell: uptime
-      resgister: output
-
-    - name: print outpur
+      register: output
+    - name: print output
       debug:
         msg: "{{output}}"
-
-
