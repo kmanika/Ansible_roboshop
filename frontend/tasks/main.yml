@@ -7,6 +7,8 @@
   systemd:
     name: nginx
     state: started
+    enabled: yes
+
 - name: Download the code
   git:
     repo: https://github.com/roboshop-devops-project/frontend/archive/main.zip
