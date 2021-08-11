@@ -7,9 +7,6 @@
   get_url:
     url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
-# cd /usr/share/nginx/html
-# rm -rf *
-# unzip /tmp/frontend.zip
 # mv frontend-main/* .
 # mv static/* .
 # rm -rf frontend-master static
@@ -22,5 +19,12 @@
 - name: unzip the acrchive
   unarchive:
     src: /tmp/frontend-main.zip
-    dest: /usr/share/nginx/
+    dest: /tmp
     remote_src: yes
+- name: remove the files
+  copy:
+    src: /tmp/frontend-main/static
+    dest: /usr/share/nginx
+    remote_src: yes
+
+
