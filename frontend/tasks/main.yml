@@ -8,3 +8,20 @@
   get_url:
     url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
+# cd /usr/share/nginx/html
+# rm -rf *
+# unzip /tmp/frontend.zip
+# mv frontend-main/* .
+# mv static/* .
+# rm -rf frontend-master static
+# mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
+- name: Remove old contetnt
+  file:
+    path: /usr/share/nginx/html
+    state: absent
+- name: unzip the acrchive
+  unarchive:
+    src: /tmp/frontend.zip
+    dest: /usr/share/nginx/
+    remote_src: yes
