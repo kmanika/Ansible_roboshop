@@ -11,11 +11,3 @@
   git:
     repo: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp/frontend.zip
-
-- name: code setup
-  shell:
-    chdir: /usr/share/nginx/html
-    removes: *
-    cmd:
-
-
