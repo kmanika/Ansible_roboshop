@@ -3,11 +3,6 @@
   yum:
     name: nginx
     state: installed
-- name: Start Nginx
-  systemd:
-    name: nginx
-    state: started
-    enabled: yes
 
 - name: Download the code
   git:
