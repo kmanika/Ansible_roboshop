@@ -6,4 +6,4 @@
       register: output
     - name: print output
       debug:
-        msg: "{{output}}"
+        msg: "{{output.stdout}}"
