@@ -1,12 +1,12 @@
-- name : Front setup
-  become: yes
-  hosts: frontend
-  roles:
-    - name: frontend
+# - name : Front setup
+#   become: yes
+#   hosts: frontend
+#   roles:
+#     - name: frontend
 
-- name: MongoDB setup
+- name : MongoDB setup
   become: yes
   hosts: frontend
   tags: mongodb
   roles:
-    -name: mongodb
+    - name : mongodb
