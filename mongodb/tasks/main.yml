@@ -1,0 +1,30 @@
+- name: Setup mongodb repo
+  copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Install Mongodb
+  yum:
+    name : mongodb-org
+    state: present
+
+- name: Start Mongodb
+  systemd:
+    name : mongob
+    state: started
+    enabled: yes
+
+- name : Download the code
+  unarchive:
+    src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    dest: /tmp/mongodb.zip
+    remote_src: yes
+
+
+
+
+# cd /tmp
+# unzip mongodb.zip
+# cd mongodb-main
+# mongo < catalogue.js
+# mongo < users.js
