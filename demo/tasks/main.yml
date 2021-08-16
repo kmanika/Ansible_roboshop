@@ -1,3 +1,0 @@
-- name: checking roles
-  debug:
-    msg: "{{MSG}}"

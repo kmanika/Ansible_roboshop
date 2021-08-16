@@ -1,17 +1,28 @@
 - name : Install nodejs
   yum :
+    name : ["nodejs","nodejs","gcc-c++"]
+    state: installed
 
+- name : User creation
+  user:
+    name : roboshop
+    state : present
 
+- name : Code Download
+  include_role:
+    name : common
+    tasks_from : download
 
+- name : Install the code
+  copy:
+    src: /tmp/catalogue-main
+    dest: /home/roboshop/catalogue
+    remote_src: yes
+    owner : roboshop
+    group : roboshop
 
-# yum install nodejs make gcc-c++ -y
-
-
-
-## useradd roboshop
-#$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
-#$ cd /home/roboshop
-#$ unzip /tmp/catalogue.zip
-#$ mv catalogue-main catalogue
-#$ cd /home/roboshop/catalogue
-#$ npm install
+- name : Install NPM
+  become: roboshop
+  npm:
+    path: /home/roboshop/catalogue
+    state : latest

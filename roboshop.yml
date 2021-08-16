@@ -12,3 +12,10 @@
   tags : mongodb
   roles :
     - name : mongodb
+
+- name : Catalogue setup
+  become : yes
+  hosts : FRONTEND
+  tags : catalogue
+  roles :
+    - name : catalogue
