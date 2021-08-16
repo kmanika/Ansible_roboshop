@@ -1,11 +1,11 @@
-- name : Roboshop setup
+- name : Front setup
   become: yes
   hosts: frontend
   roles:
     - name: frontend
 
-#- name: Catalogue Setup
-#  become: yes
-#  hosts: FRONTEND
-#  roles:
-#    - name : catalogue
+- name : MongoDB setup
+  become: yes
+  hosts: frontend
+  roles:
+  -name: mongodb
