@@ -9,4 +9,4 @@
   hosts: frontend
   tags: mongodb
   roles:
-  -name: mongodb
+    -name: mongodb
