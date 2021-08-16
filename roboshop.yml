@@ -1,3 +1,11 @@
+- name : Frontend setup
+  become : yes
+  hosts : FRONTEND
+  tags : frontend
+  roles :
+    - name : frontend
+
+
 - name : Mongodb setup
   become : yes
   hosts : FRONTEND
