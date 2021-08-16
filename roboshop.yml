@@ -4,8 +4,8 @@
   roles:
     - name: frontend
 
-- name: Catalogue Setup
-  become: yes
-  hosts: FRONTEND
-  roles:
-    - name : catalogue
+#- name: Catalogue Setup
+#  become: yes
+#  hosts: FRONTEND
+#  roles:
+#    - name : catalogue
