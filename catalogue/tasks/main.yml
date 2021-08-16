@@ -22,7 +22,7 @@
     group : roboshop
 
 - name : Install NPM
-  become: roboshop
+  become_user: roboshop
   npm:
     path: /home/roboshop/catalogue
     state : latest
