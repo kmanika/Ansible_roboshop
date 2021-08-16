@@ -8,6 +8,12 @@
     name : mongodb-org
     state: present
 
+- name: Update the Listen IP
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
 - name: Start Mongodb
   systemd:
     name : mongod
@@ -20,11 +26,12 @@
     dest: /tmp/
     remote_src: yes
 
+- name : Load the schema
+  mongodb_shell:
+    file: "/tmp/mongodb-main/catalogue.js"
+    idempotent: yes
 
-
-
-# cd /tmp
-# unzip mongodb.zip
-# cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js
+- name : Load the schema
+  mongodb_shell:
+    file: "/tmp/mongodb-main/users.js"
+    idempotent: yes
