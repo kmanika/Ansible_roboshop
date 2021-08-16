@@ -27,8 +27,6 @@
     remote_src: yes
 
 - name : Load schema
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/{{item}}.js"
+  mongodb_shell:
+    file: "/tmp/mongodb-main/catalogue.js"
     idempotent: yes
-    loop:
-      - catalogue
