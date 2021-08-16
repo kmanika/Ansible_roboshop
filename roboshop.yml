@@ -4,7 +4,7 @@
   roles:
     - name: frontend
 
-- name : MongoDB setup
+- name: MongoDB setup
   become: yes
   hosts: frontend
   tags: mongodb
