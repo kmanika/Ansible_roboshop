@@ -33,3 +33,10 @@
   tags : user
   roles :
     - name : user
+
+- name : Cart setup
+  become : yes
+  hosts : FRONTEND
+  tags : cart
+  roles :
+    - name : cart
