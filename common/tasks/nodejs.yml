@@ -16,7 +16,7 @@
 - name : Install the code
   copy:
     src: /tmp/{{COMPONENT}}-main/
-    dest: /home/roboshop/{{COMPONEN}}/
+    dest: /home/roboshop/{{COMPONENT}}/
     remote_src: yes
     owner : roboshop
     group : roboshop
