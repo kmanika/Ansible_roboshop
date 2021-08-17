@@ -20,7 +20,7 @@
   roles :
     - name : catalogue
 
-- name: Redis setup
+- name : Redis setup
   hosts: FRONTEND
   become: yes
   tags: redis
