@@ -34,7 +34,7 @@
 
 - name : Restart catalogue service
   systemd:
-    name: {{COMPONENT}}
+    name: "{{COMPONENT}}"
     state: started
     enabled: yes
     daemon_reload: yes
