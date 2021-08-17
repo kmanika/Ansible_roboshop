@@ -21,8 +21,8 @@
     - name : catalogue
 
 - name : Redis setup
-  hosts: FRONTEND
-  become: yes
-  tags: redis
-  roles:
-    name: redis
+  hosts : FRONTEND
+  become : yes
+  tags : redis
+  roles :
+    name : redis
