@@ -26,3 +26,15 @@
   npm:
     path: /home/roboshop/catalogue
     state : latest
+
+- name : Update systemd config
+  copy:
+    src : systemd.service
+    dest : /etc/systemd/system/catalogue.service
+
+- name : Restart catalogue service
+  systemd:
+    name: catalogue
+    state: started
+    enabled: yes
+    daemon_reload: yes
