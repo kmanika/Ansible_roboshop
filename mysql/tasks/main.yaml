@@ -18,11 +18,14 @@
   shell : grep "temporary password" /var/log/mysqld.log|awk '{print $NF}'
   register: out
 
-- name : Change default password
-  shell : echo "show databases;" | mysql -uroot -pRoboShop@1
-  register : defalu_pass
-  ignore_errors : yes
+- name: Check the default password
+  community.mysql.mysql_query:
+    query: show databases
+    login_password: RoboShop@1
+    login_user: root
+  register: default_mysql_check
+  ignore_errors: yes
 
 - name : print password
-  debug :
-    msg : "{{defalu_pass}}"
+  when : default_mysql_check.failed
+  shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p"{{out.stdout}}"
