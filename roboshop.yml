@@ -40,3 +40,10 @@
   tags : cart
   roles :
     - name : cart
+
+- name : Mysql setup
+  become : yes
+  hosts : FRONTEND
+  tags : mysql
+  roles :
+    - name : mysql

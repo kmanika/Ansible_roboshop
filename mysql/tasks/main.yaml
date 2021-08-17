@@ -8,4 +8,8 @@
     name : ["mysql-community-server", "MySQL-python"]
     state: present
 
-- name :
+- name : Start the mysqld
+  systemd :
+    name : mysqld
+    state : restarted
+    enabled : yes
