@@ -1,28 +1,4 @@
-- name : Install nodejs
-  yum :
-    name : ["nodejs","nodejs","gcc-c++"]
-    state: installed
-
-- name : User creation
-  user:
-    name : roboshop
-    state : present
-
-- name : Code Download
-  include_role:
+- name : Catalogue Setup
+  include_role :
     name : common
-    tasks_from : download
-
-- name : Install the code
-  copy:
-    src: /tmp/catalogue-main/
-    dest: /home/roboshop/catalogue/
-    remote_src: yes
-    owner : roboshop
-    group : roboshop
-
-- name : Install NPM
-  become_user: roboshop
-  npm:
-    path: /home/roboshop/catalogue
-    state : latest
+    tasks_from : nodejs
