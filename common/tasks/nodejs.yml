@@ -15,8 +15,8 @@
 
 - name : Install the code
   copy:
-    src: /tmp/catalogue-main/
-    dest: /home/roboshop/catalogue/
+    src: /tmp/{{COMPONENT}}-main/
+    dest: /home/roboshop/{{COMPONEN}}/
     remote_src: yes
     owner : roboshop
     group : roboshop
@@ -24,17 +24,17 @@
 - name : Install NPM
   become_user: roboshop
   npm:
-    path: /home/roboshop/catalogue
+    path: /home/roboshop/{{COMPONENT}}
     state : latest
 
 - name : Update systemd config
   copy:
     src : systemd.service
-    dest : /etc/systemd/system/catalogue.service
+    dest : /etc/systemd/system/{{COMPONENT}}.service
 
 - name : Restart catalogue service
   systemd:
-    name: catalogue
+    name: {{COMPONENT}}
     state: started
     enabled: yes
     daemon_reload: yes

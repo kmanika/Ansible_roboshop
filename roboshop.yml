@@ -26,3 +26,10 @@
   tags : redis
   roles :
     - name : redis
+
+- name : User Setup
+  become : yes
+  hosts : FRONTEND
+  tags : user
+  roles :
+    - name : user
