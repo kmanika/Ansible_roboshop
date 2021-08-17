@@ -22,3 +22,7 @@
   shell : echo "show databases;" | mysql -uroot -pRoboShop@1
   register : defalu_pass
   ignore_errors : yes
+
+- name : print password
+  debug :
+    msg : "{{defalu_pass}}"
