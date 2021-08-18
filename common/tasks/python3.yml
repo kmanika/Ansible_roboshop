@@ -24,16 +24,16 @@
     executable : pip3
 
 - name : Update INI file
-  replace :
+  lineinfile :
     path : /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
     regexp : "^uid"
-    replace : "uid = {{app_user.uid}}"
+    line : "uid = {{app_user.uid}}"
 
 - name : Update INI file
-  replace :
+  lineinfile :
     path : /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
     regexp : "^gid"
-    replace : "gid = {{app_user.group}}"
+    line : "gid = {{app_user.group}}"
 
 - name : Systemd setup
   include_tasks :
