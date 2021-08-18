@@ -1,6 +1,7 @@
 - name : User creation
   user:
     name : roboshop
+  register : app_user
 
 - name: Download from Github
   include_tasks:

@@ -1,0 +1,38 @@
+
+
+#Update the roboshop user and group id in payment.ini file.
+#
+#Setup the service
+#
+## mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
+## systemctl daemon-reload
+## systemctl enable payment
+## systemctl start payment
+
+- name : Install Python3
+  yum :
+    name : ["python36","gcc","python3-devel"]
+    state : installed
+
+- name : Code setup & User creation
+  include_tasks :
+    file : download
+
+- name : Install dependencies
+  pip :
+    requirements : /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable : pip3
+
+- name : print username details
+  debug :
+    msg : {{app_user}}
+
+- name : Update INI file
+  replace :
+    path : /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp : ""
+    replace : ""
+
+- name : Systemd setup
+  include_tasks :
+    file : systemd

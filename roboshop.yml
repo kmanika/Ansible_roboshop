@@ -61,3 +61,10 @@
   tags : rabbitmq
   roles :
     - name : rabbitmq
+
+- name : payment setup
+  become : yes
+  hosts : FRONTEND
+  tags : payment
+  roles :
+    - name : payment
