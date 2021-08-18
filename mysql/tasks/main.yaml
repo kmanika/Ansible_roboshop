@@ -35,3 +35,18 @@
     query: uninstall plugin validate_password
     login_password: RoboShop@1
     login_user: root
+  ignore_errors : yes
+
+- name : Download the code
+  include_role :
+    name : common
+    tasks_from : download
+
+- name : Load the schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /tmp/{{COMPONENT}}-main/shipping.sql
+    login_user : root
+    login_password: RoboShop@1
+
