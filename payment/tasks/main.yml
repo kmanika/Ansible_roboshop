@@ -1,4 +1,4 @@
 - name : Payment config setup
   include_role:
     name : common
-    tasks_from : pytho3
+    tasks_from : python3
