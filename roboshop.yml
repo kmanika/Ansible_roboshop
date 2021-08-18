@@ -54,3 +54,10 @@
   tags : shipping
   roles :
     - name : shipping
+
+- name : Rabbitmq setup
+  become : yes
+  hosts : FRONTEND
+  tags : rabbitmq
+  roles :
+    - name : rabbitmq
