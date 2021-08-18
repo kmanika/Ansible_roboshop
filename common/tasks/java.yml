@@ -1,0 +1,25 @@
+
+#Update Servers IP address in /home/roboshop/shipping/systemd.service
+## mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
+## systemctl daemon-reload
+## systemctl start shipping
+## systemctl enable shipping
+
+- name : Install Maven
+  yum :
+    name : maven
+    state : installed
+
+- name : Download the code from Guthub & Add app user
+  include_role :
+    name : common
+    tasks_from : download
+
+- name : compile the packages
+  shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+  args :
+    chdir : /home/roboshop/{{COMPONENT}}/
+
+- name : Systemd setup
+  include_tasks :
+    file : systemd.yml

@@ -47,3 +47,10 @@
   tags : mysql
   roles :
     - name : mysql
+
+- name : Shipping setup
+  become : yes
+  hosts : FRONTEND
+  tags : shipping
+  roles :
+    - name : shipping

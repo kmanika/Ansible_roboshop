@@ -3,23 +3,10 @@
     name : ["nodejs","nodejs","gcc-c++"]
     state: installed
 
-- name : User creation
-  user:
-    name : roboshop
-    state : present
-
 - name : Code Download
   include_role:
     name : common
     tasks_from : download
-
-- name : Install the code
-  copy:
-    src: /tmp/{{COMPONENT}}-main/
-    dest: /home/roboshop/{{COMPONENT}}/
-    remote_src: yes
-    owner : roboshop
-    group : roboshop
 
 - name : Install NPM
   become_user: roboshop
@@ -27,14 +14,6 @@
     path: /home/roboshop/{{COMPONENT}}
     state : latest
 
-- name : Update systemd config
-  copy:
-    src : systemd.service
-    dest : /etc/systemd/system/{{COMPONENT}}.service
-
-- name : Restart catalogue service
-  systemd:
-    name: "{{COMPONENT}}"
-    state: started
-    enabled: yes
-    daemon_reload: yes
+- name : Systemd setup
+  include_tasks :
+    file : systemd.yml
