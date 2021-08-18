@@ -25,7 +25,7 @@
 
 - name : print username details
   debug :
-    msg : {{app_user}}
+    msg : "{{app_user}}"
 
 - name : Update INI file
   replace :
