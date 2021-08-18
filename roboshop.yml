@@ -1,70 +1,69 @@
 - name : Frontend setup
   become : yes
-  hosts : FRONTEND
+  hosts : frontend
   tags : frontend
   roles :
     - name : frontend
 
-
 - name : Mongodb setup
   become : yes
-  hosts : FRONTEND
+  hosts : mongodb
   tags : mongodb
   roles :
     - name : mongodb
 
 - name : Catalogue setup
   become : yes
-  hosts : FRONTEND
+  hosts : catalogue
   tags : catalogue
   roles :
     - name : catalogue
 
 - name : Redis setup
   become : yes
-  hosts : FRONTEND
+  hosts : redis
   tags : redis
   roles :
     - name : redis
 
 - name : User Setup
   become : yes
-  hosts : FRONTEND
+  hosts : user
   tags : user
   roles :
     - name : user
 
 - name : Cart setup
   become : yes
-  hosts : FRONTEND
+  hosts : cart
   tags : cart
   roles :
     - name : cart
 
 - name : Mysql setup
   become : yes
-  hosts : FRONTEND
+  hosts : mysql
   tags : mysql
   roles :
     - name : mysql
 
 - name : Shipping setup
   become : yes
-  hosts : FRONTEND
+  hosts : shipping
   tags : shipping
   roles :
     - name : shipping
 
 - name : Rabbitmq setup
   become : yes
-  hosts : FRONTEND
+  hosts : rabbitmq
   tags : rabbitmq
   roles :
     - name : rabbitmq
 
 - name : payment setup
   become : yes
-  hosts : FRONTEND
+  hosts : payment
   tags : payment
   roles :
     - name : payment
