@@ -1,0 +1,6 @@
+- name : Restart service - Handler
+  systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
