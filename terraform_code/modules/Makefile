@@ -2,6 +2,7 @@ clean:
 	@rm -rf .terraform*
 dev-apply:	clean ## Create Dev environment
 	@terraform init -backend-config=env/dev-backend.tfvars
+	@terraform plan -var-file=env/dev.tfvars
 #	@terraform apply -auto-approve -var-file=env/dev.tfvars
 
 dev-destroy:	clean ## Destroy DEV environment
