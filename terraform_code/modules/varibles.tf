@@ -6,3 +6,4 @@ variable "ami_id_robo" {
   }
 }
 variable "components" {}
+variable "Env" {}

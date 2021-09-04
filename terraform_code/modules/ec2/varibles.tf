@@ -5,3 +5,4 @@ variable "SG_Name" {
 variable "sg_details" {}
 variable "ami_id" {}
 variable "components" {}
+variable "Env" {}

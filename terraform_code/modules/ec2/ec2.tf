@@ -8,7 +8,7 @@ resource "aws_spot_instance_request" "Roboshop_spot_ec2" {
   instance_interruption_behavior  = "stop"
   wait_for_fulfillment            = true
   tags                            = {
-    Name                          = element(var.components,count.index)
+    Name                          = "${element(var.components,count.index)}-${var.Env}"
   }
 }
 
@@ -16,11 +16,11 @@ resource "aws_ec2_tag" "ec2_tag" {
   count                           = length(var.components)
   key                             = "Name"
   resource_id                     = aws_spot_instance_request.Roboshop_spot_ec2.*.spot_instance_id[count.index]
-  value                           = element(var.components,count.index)
+  value                           = "${element(var.components,count.index)}-${var.Env}"
 }
 resource "aws_route53_record" "roboshop_dns" {
   count                           = length(var.components)
-  name                            = element(var.components,count.index )
+  name                            = "${element(var.components,count.index)}-${var.Env}"
   type                            = "A"
   ttl                             = 300
   zone_id                         = "Z09750201DUHVNHVKBJU4"
@@ -58,6 +58,6 @@ resource "local_file" "inventory_file" {
   depends_on = [aws_route53_record.roboshop_dns]
   #content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}"
   content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}\n[catalogue]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[1]}\n[user]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[2]}\n[shipping]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[3]}\n[cart]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[4]}\n[payment]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[5]}\n[mysql]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[6]}\n[mongodb]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[7]}\n[rabbitmq]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[8]}\n[redis]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[9]}\n"
-  filename = "/tmp/inv-roboshop"
+  filename = "/tmp/inv-roboshop-${var.Env}"
 }
 
