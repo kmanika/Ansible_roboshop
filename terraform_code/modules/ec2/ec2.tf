@@ -56,8 +56,8 @@ data "aws_ec2_spot_price" "spot_details" {
 
 resource "local_file" "inventory_file" {
   depends_on = [aws_route53_record.roboshop_dns]
-  #content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}"
-  content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}\n[catalogue]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[1]}\n[user]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[2]}\n[shipping]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[3]}\n[cart]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[4]}\n[payment]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[5]}\n[mysql]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[6]}\n[mongodb]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[7]}\n[rabbitmq]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[8]}\n[redis]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[9]}\n"
+  content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}"
+//  content = "[frontend]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[0]}\n[catalogue]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[1]}\n[user]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[2]}\n[shipping]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[3]}\n[cart]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[4]}\n[payment]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[5]}\n[mysql]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[6]}\n[mongodb]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[7]}\n[rabbitmq]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[8]}\n[redis]\n${aws_spot_instance_request.Roboshop_spot_ec2.*.private_ip[9]}\n"
   filename = "/tmp/inv-roboshop-${var.Env}"
 }
 
