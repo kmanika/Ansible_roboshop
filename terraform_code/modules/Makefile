@@ -1,17 +1,17 @@
 clean:
 	@rm -rf .terraform*
 dev-apply:	clean ## Create Dev environment
-	@terraform init -backend-config=env/dev-providers.tfenv
-#	@terraform apply -auto-approve -var-file=env/dev.tfenv
+	@terraform init -backend-config=env/dev-backend.tfvars
+#	@terraform apply -auto-approve -var-file=env/dev.tfvars
 
 dev-destroy:	clean ## Destroy DEV environment
-	@terraform init -backend-config=env/dev-providers.tfenv
-	@terraform destroy -auto-approve -var-file=env/dev.tfenv
+	@terraform init -backend-config=env/dev-backend.tfvars
+	@terraform destroy -auto-approve -var-file=env/dev.tfvars
 
 prod-apply:	clean ## Create Dev environment
-	@terraform init -backend-config=env/prod-providers.tfenv
-	@terraform apply -auto-approve -var-file=env/prod.tfenv
+	@terraform init -backend-config=env/prod-backend.tfvars
+	@terraform apply -auto-approve -var-file=env/prod.tfvars
 
 prod-destroy:	clean ## Destroy Prod environment
-	@terraform init -backend-config=env/prod-providers.tfenv
-	@terraform destroy -auto-approve -var-file=env/prod.tfenv
+	@terraform init -backend-config=env/prod-backend.tfvars
+	@terraform destroy -auto-approve -var-file=env/prod.tfvars
