@@ -1,7 +1,7 @@
 clean:
 	@rm -rf .terraform*
 dev-apply:	clean ## Create Dev environment
-	@terraform init -backend-config=vars/vars/dev-backend.tfvars
+	@terraform init -backend-config=vars/dev-backend.tfvars
 	@terraform plan -var-file=dev.tfvars
 #	@terraform apply -auto-approve -var-file=vars/dev.tfvars
 
