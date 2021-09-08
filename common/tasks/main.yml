@@ -2,7 +2,7 @@
   copy:
     src: set-hostname.yml
     dest: /bin/set-hostname
-    mode: 0755
+    mode: u+rwx,g+rx,o+rx
 
 - name: Setup hostname
   shell: set-hostname {{COMPONENT}}
