@@ -25,8 +25,15 @@
 #    dest: /etc/nginx/default.d/roboshop.conf
 - name : Update config file
   template:
-     src: roboshop.conf
+     src: roboshop-lb.conf
      dest : /etc/nginx/default.d/roboshop.conf
+  when : COMPONENT is defined
+
+- name : Update config file
+  template:
+    src: roboshop.conf
+    dest : /etc/nginx/default.d/roboshop.conf
+  when : COMPONENT is not defined
 
 - name: Restart Nginx
   systemd:
