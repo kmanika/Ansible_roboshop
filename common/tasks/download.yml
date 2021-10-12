@@ -23,3 +23,4 @@
 - name: Download from Azure Artifacts
   include_tasks:
     file: download-from-az.yml
+  when: APP_VERSION is defined
