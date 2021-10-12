@@ -1,0 +1,33 @@
+- name: Create App code Dir
+  file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: directory
+  become_user: roboshop
+  when: COMPONENT != "frontend"
+
+- name: Import RPM key for AZ Repo
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc
+
+- name : Copy repo file
+  copy:
+    src: azure-cli.repo
+    dest: /etc/yum.repos.d/azure-cli.repo
+
+- name: Install AZ CLI
+  yum:
+    name: azure-cli
+    state: installed
+
+- name: Install AZ extension
+  shell: az extension add --name azure-devops
+
+- name: Set Token
+  shell: echo ${PAT} | az devops login
+  6r2fqvkslmo4cmdhtrasqdbxyycsd6nhj4ewrnbhphbpusde62ka
+
+- name: Download Artifacts
+  shell: az artifacts universal download \ --organization "https://dev.azure.com/maniaws512/" \ --project "c37db7c6-b0a6-468d-9bd6-683875d6a882" \ --scope project \ --feed "Roboshop" \ --name ${{COMPONENT}} \ --version {{APP_VERSION}} \ --path .
+  args:
+    chdir: /home/roboshop/{{COMPONENT}}

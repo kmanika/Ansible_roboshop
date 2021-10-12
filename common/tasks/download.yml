@@ -19,3 +19,7 @@
     remote_src: yes
     owner : roboshop
     group : roboshop
+
+- name: Download from Azure Artifacts
+  include_tasks:
+    file: download-from-az.yml

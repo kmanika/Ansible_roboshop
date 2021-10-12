@@ -1,5 +1,11 @@
-- name: Dowandloadn and extract
-  unarchive:
-    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
-    dest: /tmp
-    remote_src: yes
+- name: Create App code Dir
+  file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: directory
+  become_user: roboshop
+  when: COMPONENT != "frontend"
+
+- name : Import RPM key for AZ repo
+  rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc
