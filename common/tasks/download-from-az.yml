@@ -25,7 +25,6 @@
 
 - name: Set Token
   shell: echo ${PAT} | az devops login
-  6r2fqvkslmo4cmdhtrasqdbxyycsd6nhj4ewrnbhphbpusde62ka
 
 - name: Download Artifacts
   shell: az artifacts universal download \ --organization "https://dev.azure.com/maniaws512/" \ --project "c37db7c6-b0a6-468d-9bd6-683875d6a882" \ --scope project \ --feed "Roboshop" \ --name ${{COMPONENT}} \ --version {{APP_VERSION}} \ --path .
